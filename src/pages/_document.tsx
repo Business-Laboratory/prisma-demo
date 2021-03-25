@@ -1,3 +1,4 @@
+import 'twin.macro'
 import Document, {
   Html,
   Head,
@@ -146,7 +147,7 @@ class MyDocument extends Document {
             crossOrigin=""
           />
         </Head>
-        <body>
+        <body tw="font-body bg-gray-100">
           <Main />
           <NextScript />
         </body>
