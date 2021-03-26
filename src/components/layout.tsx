@@ -11,10 +11,6 @@ const Layout: React.FC<Props> = (props) => (
     <div tw="px-8" className="layout">
       {props.children}
     </div>
-    <style jsx global>{`
-      body {
-      }
-    `}</style>
   </div>
 )
 

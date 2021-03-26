@@ -15,7 +15,7 @@ export type PostProps = {
 function Post({ id, author, title, content }: PostProps) {
   const authorName = author ? author.name : 'Unknown author'
   return (
-    <Link href={`/p/${id}`}>
+    <Link href={`/p/${id}`} passHref>
       <a tw="block p-8 text-black cursor-pointer w-full">
         <h2 tw="bl-text-2xl">{title}</h2>
         <small tw="bl-text-xs">By {authorName}</small>
