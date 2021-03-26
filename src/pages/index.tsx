@@ -13,9 +13,7 @@ function Blog(props: BlogProps) {
       <h1 tw="bl-text-3xl font-bold">My Blog</h1>
       <main tw="mt-4">
         {props.feed.map((post) => (
-          <div key={post.id} tw="bg-white transition-shadow hover:shadow-md">
-            <Post {...post} />
-          </div>
+          <Post {...post} />
         ))}
       </main>
     </div>
