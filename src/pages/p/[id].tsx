@@ -26,7 +26,7 @@ function Post({ id, title, published, author, content }: PostProps) {
 }
 export default Post
 
-const buttonCss = tw`px-8 py-4 bg-gray-200 border-none rounded-sm bl-text-base`
+const buttonCss = tw`px-8 py-4 bg-gray-200 border-none rounded-sm bl-text-base hover:bg-gray-300`
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.id

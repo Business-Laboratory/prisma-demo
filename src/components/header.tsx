@@ -9,7 +9,7 @@ function Header() {
   return (
     <nav tw="flex p-8 items-center justify-between">
       <div tw="space-x-4">
-        <Link href="/">
+        <Link href="/" passHref>
           <a
             css={[
               linkCss,
@@ -20,17 +20,17 @@ function Header() {
             Blog
           </a>
         </Link>
-        <Link href="/drafts">
+        <Link href="/drafts" passHref>
           <a css={[linkCss, isActive('/drafts') ? tw`text-gray-500` : null]}>
             Drafts
           </a>
         </Link>
       </div>
       <div tw="space-x-4">
-        <Link href="/signup">
+        <Link href="/signup" passHref>
           <a css={[linkCss, linkButtonCss]}>Signup</a>
         </Link>
-        <Link href="/create">
+        <Link href="/create" passHref>
           <a css={[linkCss, linkButtonCss]}>+ Create draft</a>
         </Link>
       </div>
