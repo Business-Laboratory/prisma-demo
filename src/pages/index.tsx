@@ -10,11 +10,11 @@ type BlogProps = {
 function Blog(props: BlogProps) {
   return (
     <Layout>
-      <div tw="m-8">
-        <h1 tw="text-3xl font-bold">My Blog</h1>
+      <div tw="pt-6">
+        <h1 tw="bl-text-3xl font-bold">My Blog</h1>
         <main tw="mt-4">
           {props.feed.map((post) => (
-            <div key={post.id}>
+            <div key={post.id} tw="bg-white transition-shadow hover:shadow-md">
               <Post {...post} />
             </div>
           ))}

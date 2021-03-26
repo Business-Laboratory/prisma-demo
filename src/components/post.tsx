@@ -1,6 +1,6 @@
 import 'twin.macro'
 import Link from 'next/link'
-import ReactMarkdown from 'react-markdown'
+import Markdown from './markdown'
 
 export type PostProps = {
   id: number
@@ -16,10 +16,11 @@ function Post({ id, author, title, content }: PostProps) {
   const authorName = author ? author.name : 'Unknown author'
   return (
     <Link href={`/p/${id}`}>
-      <a tw="block p-8 text-black cursor-pointer w-full border border-black">
-        <h2>{title}</h2>
-        <small>By {authorName}</small>
-        <ReactMarkdown source={content} />
+      <a tw="block p-8 text-black cursor-pointer w-full">
+        <h2 tw="bl-text-2xl">{title}</h2>
+        <small tw="bl-text-xs">By {authorName}</small>
+
+        <Markdown source={content} />
       </a>
     </Link>
   )
