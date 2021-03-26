@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next'
 import Layout from '@/components/layout'
 import Post from '@/components/post'
 import type { PostProps } from '@/components/post'
+import { server } from 'lib/server'
 
 type BlogProps = {
   feed: PostProps[]
@@ -27,17 +28,8 @@ function Blog(props: BlogProps) {
 export default Blog
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const feed = [
-    {
-      id: 0,
-      title: 'Fake title',
-      author: {
-        name: 'Brooks',
-      },
-      content: '# Hi!',
-      published: true,
-    },
-  ]
+  const res = await fetch(`${server}/api/feed`)
+  const feed = await res.json()
   return {
     props: { feed },
   }

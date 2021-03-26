@@ -1,19 +1,15 @@
 import { PrismaClient } from '@prisma/client'
+declare global {
+  var prisma: PrismaClient
+}
 
-// PrismaClient is attached to the `globalThis` object in development to prevent
-// exhausting your database connection limit.
-//
-// Learn more:
-// https://pris.ly/d/help/next-js-best-practices
-
-let prisma: PrismaClient
-
+// check to use this workaround only in development and not in production
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient()
 } else {
-  if (!globalThis.prisma) {
-    globalThis.prisma = new PrismaClient()
+  if (!global.prisma) {
+    global.prisma = new PrismaClient()
   }
-  prisma = globalThis.prisma
+  prisma = global.prisma
 }
 export default prisma
