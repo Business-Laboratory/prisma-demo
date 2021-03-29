@@ -11,7 +11,7 @@ type DraftsProps = {
 function Drafts({ drafts }: DraftsProps) {
   return (
     <main>
-      <h1>Drafts</h1>
+      <h1 tw="bl-text-3xl">Drafts</h1>
       <main tw="space-y-8">
         {drafts.map((post) => (
           <Post key={post.id} {...post} />

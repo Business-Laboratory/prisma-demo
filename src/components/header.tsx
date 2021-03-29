@@ -1,10 +1,15 @@
-import tw from 'twin.macro'
 import Link from 'next/link'
+import tw from 'twin.macro'
 import { useRouter } from 'next/router'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 function Header() {
   const router = useRouter()
   const isActive = (pathname: string) => router.pathname === pathname
+
+  const [session] = useSession()
+
+  console.log(session?.user.email)
 
   return (
     <nav tw="flex p-8 items-center justify-between">
@@ -27,12 +32,16 @@ function Header() {
         </Link>
       </div>
       <div tw="space-x-4">
-        <Link href="/signup" passHref>
-          <a css={[linkCss, linkButtonCss]}>Signup</a>
-        </Link>
-        <Link href="/create" passHref>
-          <a css={[linkCss, linkButtonCss]}>+ Create draft</a>
-        </Link>
+        {session ? (
+          <>
+            <Link href="/create" passHref>
+              <a css={[linkCss, linkButtonCss]}>+ Create draft</a>
+            </Link>
+            <button onClick={() => signOut()}>Sign out</button>
+          </>
+        ) : (
+          <button onClick={() => signIn('azure-ad-b2c')}>Sign in</button>
+        )}
       </div>
     </nav>
   )
